@@ -27,8 +27,8 @@ console.log(addRandom());
 
 console.log(summarizeUser(name, age, hasHobbies));
 
-// ------------------------------------------------------------
 // Object, Properties & Methods
+// ------------------------------------------------------------
 
 const person = {
   name: "Gaurav",
@@ -39,6 +39,8 @@ const person = {
 };
 
 // Destructuring
+// -------------------------------------------------
+
 const printName = ({ name }) => {
   console.log(name);
 };
@@ -54,6 +56,7 @@ console.log(copiedPerson);
 person.green();
 
 // Arrays & Array Methods
+// -----------------------------------------------------
 
 const hobbies = ["Sports", "Cooking"];
 const [hobby1, hobby2] = hobbies;
@@ -68,6 +71,7 @@ hobbies.push("Programming");
 console.log(hobbies);
 
 // Spread & Rest Operators
+// -------------------------------------------------------
 const copiedArrays = [...hobbies];
 console.log(copiedArrays);
 
@@ -76,3 +80,31 @@ const toArray = (...args) => {
 };
 
 console.log(toArray(1, 2, 3, 4));
+
+
+// Async Code & Promises
+// ------------------------------------------------------
+
+const fetchData = () => {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Done!");
+    }, 1500);
+  });
+  return promise;
+};
+
+setTimeout(() => {
+  console.log("Timer is done!");
+  fetchData()
+    .then((text) => {
+      console.log(text);
+      return fetchData();
+    })
+    .then((text2) => {
+      console.log(text2);
+    });
+}, 2000);
+
+console.log("Hello!");
+console.log("Hi!");
